@@ -1,3 +1,16 @@
-<h1> HELLO WORLD </h1>
+{% extends 'base.html' %}
 
-<p> This is my first web page</p>
+{% block content %}
+
+	<h1> HELLO WORLD </h1>
+
+	<p> This is my first web page</p>
+<div class="shadow-lg p-3 mb-5 bg-white rounded">
+	<br/>
+
+	
+	<p id="demo">This is stuff...</p>
+	<script src="{{ url_for('static', filename='js/myfile.js') }}"></script> 
+</div>
+
+{% endblock %}

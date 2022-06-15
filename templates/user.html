@@ -1,1 +1,21 @@
-<h1>Hello {{ user_name|capitalize }} </h1>
+{% extends 'base.html' %}
+
+
+
+
+{% block content %}
+	<center>
+	<h1> {{ user_name|capitalize }} </h1> </center>
+	<br/>
+<div class="shadow-lg p-3 mb-5 bg-white rounded">
+	
+	<br/>
+	<center> 
+	 <img src="{{ url_for('static', filename='images/Bagalamukhi.png') }}" width="1000">
+	<p id="demo">This is stuff...</p>
+	
+	<script src="{{ url_for('static', filename='js/myfile.js') }}"></script>
+
+	</center>
+</div>
+{% endblock %}

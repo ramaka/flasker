@@ -1,0 +1,110 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+
+{% for message in get_flashed_messages() %} 
+	
+	<div class="alert alert-success alert-dismissible fade show" role="alert">
+		{{ message }}
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	<span aria-hidden="true">&times;</span>
+	</button>
+	</div>
+{% endfor %}
+
+	
+	<div class="card">
+  <h5 class="card-header"> {{ current_user.name }} </h5>
+  <div class="card-body">
+
+    <p class="card-text">
+		<div class="container"> 
+			<div class="row">
+				
+
+
+    			<div class="col-8">
+				    	<strong>ID: </strong> 
+						{{ current_user.id }} <br/>
+						<strong>Username: </strong>
+						{{ current_user.id }}<br/>
+						<strong>Name: </strong>
+						{{ current_user.username }}<br/>
+						<strong>Email: </strong>
+						{{ current_user.email }}<br/>
+						<strong>Favourite Color:</strong>
+						{{ current_user.favourite_color }}<br/>
+						<strong>About Author:</strong>
+						{{ current_user.about_author }}<br/>
+						
+						<strong>Date Joined:</strong>
+						{{ current_user.date_added }}<br/>
+						<br/>
+
+						<a href="{{ url_for('logout') }}" class="btn btn-outline-danger">Logout</a>
+						
+						  
+				    
+				  </div> 
+
+				  	<div class="col-4">
+				  		<img src="{{ url_for('static', filename='images/default_profile_pic.png') }}" width="200" align="right">
+				  	</div>
+				  	<br/>
+     
+  		</div>
+		</div>
+
+	</div>
+	</div>
+
+<br/>
+
+	  
+
+<div class="card">
+  <h5 class="card-header">Update Profile</h5>
+  <div class="card-body">
+   <div class="container">
+    <p class="card-text"> 
+    	<form action='/dashboard' method="POST" enctype="multipart/form-data">
+			{{ form.hidden_tag() }}
+		<tr>
+			<td>{{ form.username.label(class="form-label")}}
+				{{ form.username(class="form-control", value=name_to_update.username) }}
+				<br/>
+				{{ form.name.label(class="form-label") }} 
+				{{ form.name(class="form-control", value=name_to_update.name) }}
+				<br>
+				{{ form.email.label(class="form-label") }}
+				{{ form.email(class="form-control", value=name_to_update.email) }}
+				<br>
+				{{ form.favourite_color.label(class="form-label") }}
+				{{ form.favourite_color(class="form-control", value=name_to_update.favourite_color) }} 
+				<br>
+				{{ form.about_author.label(class="form-label") }}
+				{{ form.about_author(class="form-control", value=name_to_update.about_author, rows="15") }}
+				
+				
+			</td>
+				<br/>
+				<br/>
+		</tr>
+				{{ form.submit(class="btn btn-success") }}
+
+				<a href="{{ url_for ('delete', id=current_user.id)}}" class="btn btn-danger float-right ">Delete Account</a>
+				</p>
+
+		</form>
+		
+	
+
+				
+  
+   </div>
+  </div>
+</div>
+ 	
+	
+	
+{% endblock %}

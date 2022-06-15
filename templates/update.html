@@ -1,0 +1,58 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+<!--{% if id == current_user.id %} -->
+<h1> Update User  </h1>
+{% for message in get_flashed_messages() %} 
+	
+	<div class="alert alert-success alert-dismissible fade show" role="alert">
+		{{ message }}
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	<span aria-hidden="true">&times;</span>
+	</button>
+	</div>
+{% endfor %}
+
+
+	
+	<div class="shadow p-3 mb-5 bg-white rounded">
+			<form action="/update/{{ name_to_update.id }}" method="POST">
+			{{ form.hidden_tag() }}
+		<tr>
+			<td>{{ form.username.label(class="form-label")}}
+				{{ form.username(class="form-control", value=name_to_update.username) }}
+				<br/>
+				{{ form.name.label(class="form-label") }} 
+				{{ form.name(class="form-control", value=name_to_update.name) }}
+				<br>
+				{{ form.email.label(class="form-label") }}
+				{{ form.email(class="form-control", value=name_to_update.email) }}
+				<br>
+				{{ form.favourite_color.label(class="form-label") }}
+				{{ form.favourite_color(class="form-control", value=name_to_update.favourite_color) }}
+				<br>
+				{{ form.about_author.label(class="form-label") }}
+				{{ form.about_author(class="form-control", value=name_to_update.about_author, rows="15") }} 
+				<br>
+				  
+
+				  
+			</td>
+				<br>
+		</tr>
+			{{ form.submit(class="btn btn-secondary") }} - <a href="{{ url_for ('delete', id=current_user.id)}}">Delete</a>
+		</form>
+	</div>
+
+	<!--{% else %}	
+		<div class="alert alert-success alert-dismissible fade show" role="alert">
+		<h6> Sorry, You Can't Update That User</h6>
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		<span aria-hidden="true">&times;</span>
+		</button>
+		</div>
+		<h5>Access Denied</h5>
+		<h6> You're Not Authorised to access this Page </h6>
+	{% endif %} -->
+
+{% endblock %}
